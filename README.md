@@ -1,4 +1,3 @@
-````markdown
 # 🎟️ Tiketa — On-Chain Event Ticketing Platform
 
 Tiketa is a modern, blockchain-powered **event ticketing platform** built with **Next.js**, **Node.js**, and the **Pi Network** for on-chain payments.  
@@ -44,7 +43,6 @@ It enables users to create, manage, and verify event tickets securely using **QR
 git clone https://github.com/your-username/tiketa.git
 cd tiketa
 ```
-````
 
 ### 2. Install Dependencies
 
