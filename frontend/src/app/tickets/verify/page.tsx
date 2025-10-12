@@ -69,7 +69,8 @@ export default function VerifyTicketPage() {
       console.error("Ticket verification error:", error);
       setResult({
         success: false,
-        message: error instanceof Error ? error.message : "Network or server error",
+        message:
+          error instanceof Error ? error.message : "Network or server error",
       });
     } finally {
       setPause(false);
@@ -137,8 +138,7 @@ export default function VerifyTicketPage() {
               deviceId: deviceId,
             }}
             onScan={(detectedCodes) => {
-              if (detectedCodes.length > 0)
-                handleScan(detectedCodes[0].rawValue);
+              handleScan(detectedCodes[0].rawValue);
             }}
             onError={(error) => console.log(error)}
             styles={{ container: { height: "250px", width: "250px" } }}
