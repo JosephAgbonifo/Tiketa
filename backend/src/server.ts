@@ -17,7 +17,11 @@ import mountUserEndpoints from "./routes/userRoute";
 import "./types/session";
 import mountEventEndpoints from "./routes/eventRoute";
 
-const mongoUri = "mongodb+srv://joesefair:@joesef.dpwrhzb.mongodb.net/";
+const mongoUri = process.env.MONGO_URI;
+if (!mongoUri) {
+  throw new Error("MONGO_URI environment variable is not set");
+}
+
 const mongoClientOptions = {};
 
 //
