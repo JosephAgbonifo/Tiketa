@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Calendar, MapPin, Pi } from "lucide-react";
 import Image from "next/image";
 import { getRequest } from "@/utils/api";
+import Alert from "@/components/ui/alert";
 
 interface EventData {
   _id: string;
@@ -80,8 +81,16 @@ export default function EventsPage() {
         <p className="text-center text-muted-foreground mt-20">
           Loading events...
         </p>
+      ) : error === "Request failed with status code 401" ? (
+        <>
+          <Alert type="primary" title="Auth Error" text="Pls sign in first" />
+          <p className="text-center text-destructive mt-20">Not logged in</p>
+        </>
       ) : error ? (
-        <p className="text-center text-destructive mt-20">Error: {error}</p>
+        <>
+          <Alert type="primary" title="Auth Error" text="Pls sign in first" />
+          <p className="text-center text-destructive mt-20">Error: {error}</p>
+        </>
       ) : events.length === 0 ? (
         <p className="text-center text-muted-foreground mt-20">
           No events found.
