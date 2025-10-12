@@ -67,6 +67,7 @@ export const create = async (
     });
 
     return res.status(201).json({
+      success: true,
       message: `✅ Event created successfully by user ${user}`,
       event: newEvent,
     });
