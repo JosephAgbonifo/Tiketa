@@ -2,6 +2,7 @@
 import React from "react";
 import { PixelatedCanvas } from "../ui/pixelated";
 import { ArrowBigDown } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -46,12 +47,12 @@ export function Hero() {
           A decentralized event ticketing platform powered by Pi blockchain. Get
           your tickets, collect memories!
         </p>
-        <a
+        <Link
           href="/events"
           className="md:block inline-block w-3/10 float-end my-2 hover:mr-5 md:mr-0 md:clear-both text-center bg-gradient-to-bl  from-primary to-primary-hover  text-background px-6 py-3 rounded-full hover:bg-tiketa-violet transition-all duration-300"
         >
           Browse Events
-        </a>
+        </Link>
         <a
           href="/create"
           className="md:block inline-block w-3/10 float-end my-2 md:mr-0 mr-5 hover:mr-5 md:clear-both text-center  bg-gradient-to-bl  from-primary to-primary-hover text-background px-6 py-3 rounded-full hover:bg-tiketa-violet transition-all duration-300"
