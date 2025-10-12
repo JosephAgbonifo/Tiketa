@@ -4,16 +4,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "8765",
-        pathname: "/uploads/**", // ✅ still covers /uploads/events/*
-      },
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "8765",
-        pathname: "/uploads/**", // ✅ include this for browsers resolving localhost as 127.0.0.1
+        protocol: "https",
+        hostname: "tiketa-51fb.onrender.com",
+        pathname: "/uploads/**", // ✅ matches /uploads/events/... or any subfolder
       },
     ],
   },
