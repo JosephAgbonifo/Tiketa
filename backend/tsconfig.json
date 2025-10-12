@@ -11,6 +11,7 @@
     "resolveJsonModule": true,
     "noEmit": false,
     "baseUrl": "./src",
+    "typeRoots": ["./node_modules/@types"],
     "paths": {
       "environments": ["environments.ts"]
     },
