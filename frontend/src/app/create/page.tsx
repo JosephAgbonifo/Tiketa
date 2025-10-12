@@ -12,6 +12,8 @@ import {
   Loader2,
 } from "lucide-react";
 import { postRequest } from "@/utils/api";
+import { useRouter } from "next/navigation";
+import Alert from "@/components/ui/alert";
 
 function Clock({ size = 18 }: { size?: number }) {
   return (
@@ -47,6 +49,7 @@ interface EventFormData {
 }
 
 export default function CreateEvent() {
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState<EventFormData>({
     title: "",
     description: "",
@@ -60,6 +63,7 @@ export default function CreateEvent() {
     image: null,
   });
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -105,13 +109,16 @@ export default function CreateEvent() {
       const response = await postRequest("/event/create", formDataToSend);
 
       if (response?.success) {
-        alert("✅ Event created successfully!");
-        window.location.href = "/events";
+        setMessage("Event created successfully");
+        // delay navigation by 1s to allow the success message to be seen
+        setTimeout(() => {
+          router.push("/event");
+        }, 1000);
       } else {
         throw new Error(response?.message || "Failed to create event");
       }
     } catch (err) {
-      alert(`❌ ${(err as Error).message}`);
+      setMessage(`❌ ${(err as Error).message}`);
       console.error(err);
     } finally {
       setLoading(false);
@@ -123,6 +130,26 @@ export default function CreateEvent() {
       <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center font-antiqua">
         Create an Event
       </h2>
+
+      {message === "Event created successfully" ? (
+        <Alert
+          type="success"
+          title="Success"
+          text="Event Created Successfully, you will be redirected shortly"
+        />
+      ) : message === "Request failed with status 401" ? (
+        <Alert
+          type="primary"
+          title="Auth error"
+          text="pls, sign in before performing this action"
+        />
+      ) : (
+        <Alert
+          type="primary"
+          title="Network error"
+          text="pls, try again later"
+        />
+      )}
 
       <form
         onSubmit={handleSubmit}

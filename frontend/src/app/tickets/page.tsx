@@ -54,9 +54,7 @@ export default function TicketsPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
         <TicketX className="w-10 h-10 text-primary mb-4" />
-        <p className="text-lg font-semibold text-muted-foreground">
-          You have No tickets yet
-        </p>
+        <p className="text-lg font-semibold text-muted-foreground">{msg}</p>
       </div>
     );
   }
