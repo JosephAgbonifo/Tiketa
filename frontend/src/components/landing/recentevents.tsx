@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { getRequest } from "@/utils/api";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8765";
-
 interface Event {
   _id: string;
   eventId: string;
@@ -96,7 +94,7 @@ export default function RecentEvents() {
                 <Image
                   width={600}
                   height={400}
-                  src={`${BASE_URL}/uploads/${event.image}`}
+                  src={`https://tiketa-51fb.onrender.com/uploads/${event.image}`}
                   alt={event.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
