@@ -2,8 +2,8 @@ import axios from "axios";
 import { useAuthStore } from "@/store/useAuthStore"; // ✅ make sure path matches your project
 
 // Change this if you deploy or tunnel your backend
-// const BASE_URL = "https://tiketa-51fb.onrender.com";
-const BASE_URL = "http://localhost:8765";
+const BASE_URL = "https://tiketa-51fb.onrender.com";
+// const BASE_URL = "http://localhost:8765";
 
 // Create a single axios instance
 const api = axios.create({
