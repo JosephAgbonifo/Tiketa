@@ -111,6 +111,36 @@ export default function Header(props: Props) {
           </nav>
 
           {/* Hamburger Icon */}
+          <div className="md:hidden px-5 h-full flex items-center justify-center">
+            {props.user === null ? (
+              <button
+                onClick={() => {
+                  props.onSignIn();
+                  closeMobileMenu();
+                }}
+                className="flex items-center bg-primary text-white rounded-md p-1 space-x-4 text-tiketa-black hover:bg-primary/90 hover:scale-105 transition-all duration-300"
+              >
+                Sign in
+              </button>
+            ) : (
+              <div>
+                <div className="text-tiketa-black text-xs font-semibold py-2 inline">
+                  @{props.user.username}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    props.onSignOut();
+                    closeMobileMenu();
+                  }}
+                  className="inline-flex bg-primary h-8 text-white rounded-md p-1 ml-2 items-center space-x-4 py-3 text-tiketa-black hover:bg-primary/90 hover:scale-105 transition-all duration-300"
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+          </div>
+
           <div className="md:hidden">
             <button onClick={toggleMobileMenu} className="text-tiketa-black">
               <Menu size={24} />
@@ -181,36 +211,6 @@ export default function Header(props: Props) {
             <Info size={20} />
             <span>About</span>
           </Link>
-
-          <div>
-            {props.user === null ? (
-              <button
-                onClick={() => {
-                  props.onSignIn();
-                  closeMobileMenu();
-                }}
-                className="flex items-center space-x-4 py-3 text-tiketa-black hover:text-primary hover:scale-105 transition-all duration-300"
-              >
-                Sign in
-              </button>
-            ) : (
-              <div>
-                <div className="text-tiketa-black font-semibold py-2">
-                  @{props.user.username}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    props.onSignOut();
-                    closeMobileMenu();
-                  }}
-                  className="flex items-center space-x-4 py-3 text-tiketa-black hover:text-primary hover:scale-105 transition-all duration-300"
-                >
-                  Sign out
-                </button>
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </div>

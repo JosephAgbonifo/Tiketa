@@ -5,7 +5,6 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import mongoose from "mongoose";
-import logger from "morgan";
 import MongoStore from "connect-mongo";
 import env from "./environments";
 import mountPaymentsEndpoints from "./routes/paymentRoute";
@@ -26,19 +25,6 @@ const mongoClientOptions = {};
 
 //
 const app: express.Application = express();
-
-// Log requests to the console in a compact format:
-app.use(logger("dev"));
-
-// Full log of all requests to /log/access.log:
-app.use(
-  logger("common", {
-    stream: fs.createWriteStream(
-      path.join(__dirname, "..", "log", "access.log"),
-      { flags: "a" }
-    ),
-  })
-);
 
 // Enable response bodies to be sent as JSON:
 app.use(express.json());
