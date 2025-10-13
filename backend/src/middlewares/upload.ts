@@ -32,7 +32,7 @@ export async function uploadImageMiddleware(
     );
 
     // Attach Cloudinary URL to request
-    (req as any).image = result.secure_url;
+    (req as any).file = result.secure_url;
 
     next();
   } catch (err) {
