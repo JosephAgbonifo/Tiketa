@@ -46,11 +46,22 @@ app.use(
 
 // Enable response bodies to be sent as JSON:
 app.use(express.json());
+const allowedOrigins = [
+  env.frontend_url,
+  "https://morphevent.vercel.app",
+  "http://localhost:3000",
+];
 
 // Handle CORS:
 app.use(
   cors({
-    origin: env.frontend_url,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
