@@ -59,12 +59,7 @@ export default function VerifyTicketPage() {
       // The QR data should contain a ticketId
       const qrData = { ticketId: data };
       const json = await postRequest("event/verify", { qrData });
-
-      if (json.success) {
-        setResult(json);
-      } else {
-        setResult(json);
-      }
+      setResult(json);
     } catch (error: unknown) {
       console.error("Ticket verification error:", error);
       setResult({
