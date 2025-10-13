@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tiketa-51fb.onrender.com",
-        pathname: "/uploads/**", // ✅ matches /uploads/events/... or any subfolder
+        hostname: "res.cloudinary.com", // Cloudinary's base domain
+        pathname: "/**", // allow all paths (or narrow it down if you prefer)
       },
     ],
   },

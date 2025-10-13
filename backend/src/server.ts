@@ -27,10 +27,6 @@ const mongoClientOptions = {};
 //
 const app: express.Application = express();
 
-// Serve uploaded images statically
-// Serve main uploads
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
-
 // Log requests to the console in a compact format:
 app.use(logger("dev"));
 

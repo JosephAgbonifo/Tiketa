@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { PixelatedCanvas } from "../ui/pixelated";
-import { ArrowBigDown } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {

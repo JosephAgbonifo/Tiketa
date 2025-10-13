@@ -231,7 +231,7 @@ export default function EventDetails() {
       <div className="bg-white border border-border rounded-2xl shadow-lg p-8 w-11/12 md:w-2/3 lg:w-1/2">
         {event.image && (
           <Image
-            src={`https://tiketa-51fb.onrender.com/uploads/${event.image}`}
+            src={`${event.image}`}
             alt={event.title}
             width={800}
             height={400}

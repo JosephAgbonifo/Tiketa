@@ -94,7 +94,7 @@ export default function RecentEvents() {
                 <Image
                   width={600}
                   height={400}
-                  src={`https://tiketa-51fb.onrender.com/uploads/${event.image}`}
+                  src={`${event.image}`}
                   alt={event.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />

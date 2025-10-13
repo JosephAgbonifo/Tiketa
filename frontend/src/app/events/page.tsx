@@ -106,7 +106,7 @@ export default function EventsPage() {
               <div className="relative w-full h-52 bg-gray-100">
                 {event.image ? (
                   <Image
-                    src={`https://tiketa-51fb.onrender.com/uploads/${event.image}`}
+                    src={`${event.image}`}
                     alt={event.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
