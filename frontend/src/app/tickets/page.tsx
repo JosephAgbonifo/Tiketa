@@ -74,7 +74,7 @@ export default function TicketsPage() {
       {ticket.event?.image && (
         <div className="w-full md:w-1/3">
           <Image
-            src={`http://localhost:8765/uploads/${ticket.event.image}`}
+            src={`${ticket.event.image}`}
             alt={ticket.event.title}
             width={300}
             height={200}
