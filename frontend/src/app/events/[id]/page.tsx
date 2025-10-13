@@ -305,6 +305,10 @@ export default function EventDetails() {
                 </li>
               ))}
             </ul>
+            <p className="text-sm text-muted-foreground">
+              95% payment automatically transfered to your wallet a day after
+              the event
+            </p>
           </div>
         ) : (
           // 👇 Attendee view

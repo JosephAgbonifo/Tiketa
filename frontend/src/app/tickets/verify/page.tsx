@@ -83,7 +83,7 @@ export default function VerifyTicketPage() {
         <div className="w-full aspect-square max-w-[320px] mb-4 border-2 border-dashed border-primary/30 rounded-xl flex flex-col items-center justify-center overflow-hidden">
           <div className="w-full mb-2 flex justify-between">
             <select
-              className="border rounded px-2 py-1 text-sm"
+              className="border rounded px-2 py-1 text-sm hidden"
               onChange={(e) => setDeviceId(e.target.value)}
             >
               <option value={undefined}>Select device</option>
@@ -95,7 +95,7 @@ export default function VerifyTicketPage() {
             </select>
 
             <select
-              className="border rounded px-2 py-1 text-sm ml-2"
+              className="border rounded px-2 py-1 text-sm ml-2 hidden"
               onChange={(e) => setTracker(e.target.value)}
             >
               <option value="centerText">Center Text</option>
