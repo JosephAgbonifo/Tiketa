@@ -358,14 +358,14 @@ export const verifyTicket = async (
 
     if (!ticket) {
       return res
-        .status(404)
+        .status(200)
         .json({ success: false, message: "Ticket not found" });
     }
 
     // optional: check if ticket already used or inactive
     if (ticket.status === "used") {
       return res
-        .status(400)
+        .status(200)
         .json({ success: false, message: "Ticket already used" });
     }
 
