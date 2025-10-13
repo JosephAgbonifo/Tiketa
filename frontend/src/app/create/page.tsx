@@ -329,6 +329,7 @@ export default function CreateEvent() {
           placeholder="....."
           value={formData.address}
           onChange={handleChange}
+          className="w-full mt-2 text-sm p-2 border border-border rounded-md focus:ring-2 focus:ring-primary/50 outline-none"
           required
         />
 
