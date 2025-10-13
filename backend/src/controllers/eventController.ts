@@ -350,7 +350,9 @@ export const verifyTicket = async (
     const { ticketId } = qrData;
 
     // find the ticket and populate owner + event
-    const ticket = await Ticket.findOne({ _id: ticketId })
+    const ticket = await Ticket.findOne({
+      tokenId: ticketId,
+    })
       .populate("owner", "username email")
       .populate("event", "title date time location");
 
