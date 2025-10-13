@@ -22,7 +22,8 @@ export const create = async (
     }
 
     const user = (req as Request & { user?: string }).user;
-    const imageFile = (req as Request & { file?: Express.Multer.File }).file;
+    const imageFile = (req as Request & { file?: Express.Multer.File | string })
+      .file;
 
     if (!user)
       return res.status(401).json({ message: "Unauthorized: user not found" });
@@ -51,6 +52,18 @@ export const create = async (
     const activeUser = await User.findOne({ username: user });
     if (!activeUser) return res.status(404).json({ message: "User not found" });
 
+    // Handle both multer file object and Cloudinary URL string
+    let imageUrl = null;
+    if (imageFile) {
+      if (typeof imageFile === "string") {
+        // It's already a Cloudinary URL from uploadImageMiddleware
+        imageUrl = imageFile;
+      } else if (imageFile.filename) {
+        // It's a multer file object
+        imageUrl = imageFile.filename;
+      }
+    }
+
     const newEvent = await Event.create({
       eventId: uuidv4(),
       title,
@@ -63,7 +76,7 @@ export const create = async (
       capacity,
       ticketType,
       price: ticketType === "free" ? 0 : price,
-      image: imageFile ? imageFile.filename : null,
+      image: imageUrl,
       organizer: activeUser._id,
       tickets: [],
     });
