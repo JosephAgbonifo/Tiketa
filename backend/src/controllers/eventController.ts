@@ -369,10 +369,14 @@ export const verifyTicket = async (
         .json({ success: false, message: "Ticket already used" });
     }
 
-    // ✅ success
+    // ✅ mark the ticket as used
+    ticket.status = "used";
+    await ticket.save();
+
+    // ✅ success response
     return res.status(200).json({
       success: true,
-      message: "Ticket verified successfully",
+      message: "Ticket verified and marked as used successfully",
       ticket: {
         id: ticket._id,
         status: ticket.status,
