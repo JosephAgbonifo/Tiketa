@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Calendar, MapPin, Users, Ticket, Pi } from "lucide-react";
+import { Calendar, MapPin, Users, Ticket, Pi, Copy } from "lucide-react";
 import { useAuthStore } from "@/store/useAuthStore";
 import Image from "next/image";
 import { getRequest, postRequest } from "@/utils/api";
@@ -294,6 +294,9 @@ export default function EventDetails() {
         {user?.username && event.organizer?.username === user?.username ? (
           // 👇 Organizer view
           <div className="mt-8">
+            <button className="rounded-md p-3 bg-primary text-sm text-white">
+              <Copy className="inline mr-2" /> Click to copy event link
+            </button>
             <p className="text-lg font-semibold">
               {registrations.length}{" "}
               {registrations.length === 1 ? "person" : "people"} registered

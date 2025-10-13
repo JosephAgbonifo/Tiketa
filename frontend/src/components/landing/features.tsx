@@ -39,7 +39,7 @@ export function FeatureSection() {
         <h2 className="text-4xl font-bold text-primary mb-6 font-antiqua leading-tight">
           Why Choose{" "}
           <span className="bg-gradient-to-bl from-primary via-primary-hover to-warning bg-clip-text text-transparent">
-            Tiketa
+            Morph
           </span>
         </h2>
 

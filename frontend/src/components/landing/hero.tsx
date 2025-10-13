@@ -29,11 +29,11 @@ export function Hero() {
         jitterStrength={4}
         jitterSpeed={2}
         sampleAverage
-        className="rounded-xl "
+        className="rounded-xl absolute md:relative -z-50 opacity-40 md:opacity-100"
       />
 
       {/* Right Aligned Text */}
-      <div className="flex-1 text-right">
+      <div className="flex-1 text-right mr-5 absolute bottom-10 md:relative">
         <p className="absolute text-5xl z-50 inline-flex items-center justify-center -top-16 right-10 md:hidden font-outfit ">
           <ArrowBigDown className="text-2xl " />
         </p>
@@ -49,13 +49,13 @@ export function Hero() {
         </p>
         <Link
           href="/events"
-          className="md:block inline-block w-3/10 float-end my-2 hover:mr-5 md:mr-0 md:clear-both text-center bg-gradient-to-bl  from-primary to-primary-hover  text-background px-6 py-3 rounded-full hover:bg-tiketa-violet transition-all duration-300"
+          className="md:block text-xs inline-block w-3/10 float-end my-2 hover:mr-5 md:mr-0 md:clear-both text-center bg-gradient-to-bl  from-primary to-primary-hover  text-background px-6 py-3 rounded-full hover:bg-tiketa-violet transition-all duration-300"
         >
           Browse Events
         </Link>
         <a
           href="/create"
-          className="md:block inline-block w-3/10 float-end my-2 md:mr-0 mr-5 hover:mr-5 md:clear-both text-center  bg-gradient-to-bl  from-primary to-primary-hover text-background px-6 py-3 rounded-full hover:bg-tiketa-violet transition-all duration-300"
+          className="md:block text-xs inline-block w-3/10 float-end my-2 md:mr-0 mr-5 hover:mr-5 md:clear-both text-center  bg-gradient-to-bl  from-primary to-primary-hover text-background px-6 py-3 rounded-full hover:bg-tiketa-violet transition-all duration-300"
         >
           Create Event
         </a>

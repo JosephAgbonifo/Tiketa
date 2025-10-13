@@ -9,6 +9,7 @@ export interface IEvent extends Document {
   meetingType: "physical" | "online";
   location: string;
   capacity: number;
+  address: string;
   ticketType: "free" | "paid";
   price?: number;
   image?: string;
@@ -28,6 +29,7 @@ const EventSchema = new Schema<IEvent>(
     meetingType: { type: String, enum: ["physical", "online"], required: true },
     date: { type: Date, required: true },
     time: { type: String, required: true },
+    address: { type: String, required: true },
     location: { type: String, required: true },
     capacity: { type: Number, required: true },
     ticketType: {

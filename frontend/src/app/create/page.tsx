@@ -10,6 +10,7 @@ import {
   Pi,
   Link as LinkIcon,
   Loader2,
+  Wallet,
 } from "lucide-react";
 import { postRequest } from "@/utils/api";
 import { useRouter } from "next/navigation";
@@ -40,6 +41,7 @@ interface EventFormData {
   description: string;
   date: string;
   time: string;
+  address: string;
   meetingType: "physical" | "online";
   location: string;
   capacity: string;
@@ -54,6 +56,7 @@ export default function CreateEvent() {
     title: "",
     description: "",
     date: "",
+    address: "",
     time: "",
     meetingType: "physical",
     location: "",
@@ -112,7 +115,7 @@ export default function CreateEvent() {
         setMessage("Event created successfully");
         // delay navigation by 1s to allow the success message to be seen
         setTimeout(() => {
-          router.push("/event");
+          router.push("/events");
         }, 1000);
       } else {
         throw new Error(response?.message || "Failed to create event");
@@ -143,6 +146,8 @@ export default function CreateEvent() {
           title="Auth error"
           text="pls, sign in before performing this action"
         />
+      ) : message === "" ? (
+        ""
       ) : (
         <Alert
           type="primary"
@@ -310,6 +315,21 @@ export default function CreateEvent() {
           accept="image/*"
           onChange={handleChange}
           className="w-full mt-2 text-sm p-2 border border-border rounded-md focus:ring-2 focus:ring-primary/50 outline-none"
+        />
+
+        {/* Image Upload */}
+        <Label
+          icon={<Wallet size={18} />}
+          title="Pi wallet address"
+          className="mt-6"
+        />
+        <input
+          type="address"
+          name="address"
+          placeholder="....."
+          value={formData.address}
+          onChange={handleChange}
+          required
         />
 
         {/* Submit */}
