@@ -34,9 +34,6 @@ export function Hero() {
 
       {/* Right Aligned Text */}
       <div className="flex-1 text-right mr-5 absolute bottom-10 md:relative">
-        <p className="absolute text-5xl z-50 inline-flex items-center justify-center -top-16 right-10 md:hidden font-outfit ">
-          <ArrowBigDown className="text-2xl " />
-        </p>
         <h1 className="relative text-4xl font-bold text-primary mb-4 font-antiqua">
           Welcome to{" "}
           <span className="font bg-gradient-to-bl from-primary via-primary-hover to-warning bg-clip-text text-5xl text-transparent">
