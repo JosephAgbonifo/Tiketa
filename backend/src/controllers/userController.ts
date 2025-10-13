@@ -44,7 +44,7 @@ export const signin = async (
   return res
     .cookie("morphtoken", currentUser.accessToken, {
       httpOnly: false, // JS can't read it (protects against XSS)
-      secure: true, //process.env.NODE_ENV === "production", // only send over HTTPS in prod
+      secure: false, //process.env.NODE_ENV === "production", // only send over HTTPS in prod
       sameSite: "strict", // CSRF protection
       maxAge: 1000 * 60 * 60 * 24, // 1 days
     })

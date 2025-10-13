@@ -9,10 +9,9 @@ import {
   verifyTicket,
 } from "../controllers/eventController";
 import { verifyUser } from "../middlewares/verify";
-import { uploadImageMiddleware } from "../middlewares/upload";
 
 export default function mountEventEndpoints(router: Router) {
-  router.post("/create", verifyUser, uploadImageMiddleware, create);
+  router.post("/create", verifyUser, create);
   router.post("/verify", verifyUser, verifyTicket);
   router.get("/get", verifyUser, get);
   router.get("/get/:id", verifyUser, get);

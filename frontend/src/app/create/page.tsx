@@ -15,6 +15,7 @@ import {
 import { postRequest } from "@/utils/api";
 import { useRouter } from "next/navigation";
 import Alert from "@/components/ui/alert";
+import { uploadToCloudinary } from "@/utils/upload";
 
 function Clock({ size = 18 }: { size?: number }) {
   return (
@@ -90,35 +91,41 @@ export default function CreateEvent() {
 
     setLoading(true);
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append(
-        "eventDetails",
-        JSON.stringify({
-          title: formData.title,
-          description: formData.description,
-          date: formData.date,
-          time: formData.time,
-          meetingType: formData.meetingType,
-          location: formData.location,
-          capacity: formData.capacity,
-          ticketType: formData.ticketType,
-          price: formData.price,
-        })
-      );
       if (formData.image) {
-        formDataToSend.append("image", formData.image);
-      }
+        const imageUrl = await uploadToCloudinary(formData.image);
+        if (!imageUrl) {
+          setMessage("❌ Failed to upload image");
+          setLoading(false);
+          return;
+        }
 
-      const response = await postRequest("/event/create", formDataToSend);
+        const eventPayload = {
+          eventDetails: {
+            title: formData.title,
+            description: formData.description,
+            date: formData.date,
+            time: formData.time,
+            meetingType: formData.meetingType,
+            location: formData.location,
+            address: formData.address,
+            image: imageUrl,
+            capacity: formData.capacity,
+            ticketType: formData.ticketType,
+            price: formData.price,
+          },
+        };
 
-      if (response?.success) {
-        setMessage("Event created successfully");
-        // delay navigation by 1s to allow the success message to be seen
-        setTimeout(() => {
-          router.push("/events");
-        }, 1000);
-      } else {
-        throw new Error(response?.message || "Failed to create event");
+        const response = await postRequest("/event/create", eventPayload);
+
+        if (response?.success) {
+          setMessage("Event created successfully");
+          // delay navigation by 1s to allow the success message to be seen
+          setTimeout(() => {
+            router.push(`/events/${response.event.eventId}`);
+          }, 1000);
+        } else {
+          throw new Error(response?.message || "Failed to create event");
+        }
       }
     } catch (err) {
       setMessage(`❌ ${(err as Error).message}`);
