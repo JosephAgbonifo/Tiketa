@@ -8,7 +8,7 @@ import {
 import { verifyUser } from "../middlewares/verify";
 
 export default function mountPaymentsEndpoints(router: Router) {
-  router.post("/incomplete", handleIncompletePayment);
+  router.post("/incomplete", verifyUser, handleIncompletePayment);
   router.post("/approve", verifyUser, approvePayment);
   router.post("/complete", completePayment);
   router.post("/cancelled_payment", cancelPayment);

@@ -207,10 +207,11 @@ export const check = async (
     const event = await Event.findOne({ eventId: id }).lean();
     if (!event) return res.status(404).json({ message: "Event not found" });
 
-    // 🔹 Check if user already has a ticket for this event
+    // 🔹 Check if user already has a ticket for this event (not cancelled)
     const existingTicket = await Ticket.findOne({
       event: event._id,
       owner: activeUser._id,
+      status: { $ne: "cancelled" }, // exclude cancelled tickets
     });
 
     // ✅ Return registration status

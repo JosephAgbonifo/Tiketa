@@ -17,5 +17,5 @@
     },
     "types": ["node", "express", "express-session"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/pay.ts"]
 }

@@ -1,6 +1,6 @@
-# 🎟️ Tiketa — On-Chain Event Ticketing Platform
+# 🎟️ Morph — On-Chain Event Ticketing Platform
 
-Tiketa is a modern, blockchain-powered **event ticketing platform** built with **Next.js**, **Node.js**, and the **Pi Network** for on-chain payments.  
+Morph is a modern, blockchain-powered **event ticketing platform** built with **Next.js**, **Node.js**, and the **Pi Network** for on-chain payments.  
 It enables users to create, manage, and verify event tickets securely using **QR codes** and **decentralized transactions**, ensuring transparency and preventing fraud.
 
 ---
@@ -8,7 +8,7 @@ It enables users to create, manage, and verify event tickets securely using **QR
 ## 🚀 Features
 
 - **Event Creation** — Organizers can create physical or online events with full details.
-- **On-Chain Payments** — Pay for tickets using **Pi Network** crypto.
+- **On-Chain Payments** — Pay fosr tickets using **Pi Network** crypto.
 - **Smart Ticketing** — Unique, verifiable QR code for each ticket.
 - **User Dashboard** — Manage your created and purchased tickets.
 - **Verification System** — Scan and verify tickets instantly via camera or QR input.
@@ -40,8 +40,8 @@ It enables users to create, manage, and verify event tickets securely using **QR
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/tiketa.git
-cd tiketa
+git clone https://github.com/your-username/Morph.git
+cd Morph
 ```
 
 ### 2. Install Dependencies
@@ -98,7 +98,7 @@ Each ticket generates a unique **QR code** that can be scanned using the built-i
 
 ## 🪙 Pi Network Integration
 
-Tiketa integrates the **Pi SDK** to handle on-chain transactions securely and seamlessly for ticket payments.
+Morph integrates the **Pi SDK** to handle on-chain transactions securely and seamlessly for ticket payments.
 
 ---
 
@@ -111,7 +111,7 @@ Tiketa integrates the **Pi SDK** to handle on-chain transactions securely and se
 | `/create`         | Create a new event          |
 | `/tickets`        | View your tickets           |
 | `/tickets/verify` | Verify event tickets via QR |
-| `/about`          | About Tiketa                |
+| `/about`          | About Morph                 |
 | `/privacypolicy`  | Privacy Policy              |
 | `/terms`          | Terms of Service            |
 

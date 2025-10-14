@@ -23,15 +23,21 @@ export const handleIncompletePayment = async (req: Request, res: Response) => {
     const horizonResponse = await axios.create({ timeout: 20000 }).get(txURL);
     const memo = horizonResponse.data.memo;
 
+    console.log("Handling incomplete payment:", req.body);
     if (memo !== paymentId)
-      return res.status(400).json({ message: "Payment ID mismatch" });
+      return res
+        .status(400)
+        .json({ message: "Payment memo does not match payment ID" });
+
+    if (horizonResponse.data.success !== true)
+      return res.status(400).json({ message: "Payment not successful" });
 
     // ✅ Mark transaction as completed
     txn.txHash = txid;
     txn.status = "completed";
     await txn.save();
 
-    // ✅ Mark ticket active if linked
+    // // ✅ Mark ticket active if linked
     if (txn.ticket) {
       await Ticket.findByIdAndUpdate(txn.ticket, { status: "active" });
     }
@@ -40,13 +46,10 @@ export const handleIncompletePayment = async (req: Request, res: Response) => {
       txid,
     });
 
-    return res.status(200).json({
-      message: `✅ Incomplete payment ${paymentId} handled successfully`,
-      transaction: txn,
-    });
+    console.log(`✅ Completed incomplete payment ${paymentId}`);
   } catch (err: any) {
     // console.error("❌ Error handling incomplete payment:", err);
-    return res.status(500).json({ error: err.message });
+    console.log("❌ Error handling incomplete payment:", err);
   }
 };
 

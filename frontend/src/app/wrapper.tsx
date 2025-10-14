@@ -49,9 +49,11 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
   };
 
   // Handler for incomplete payments found during authentication
-  const onIncompletePaymentFound = (payment: Payment) => {
+  const onIncompletePaymentFound = async (payment: Payment) => {
     // You can handle incomplete payments here, e.g., notify the user or log
-    console.log("Incomplete payment found:", payment);
+    console.error("Incomplete payment found:", payment);
+    const res = await postRequest("/payments/incomplete", { payment });
+    console.log("Server approval response:", res);
   };
 
   const signIn = async () => {
@@ -84,7 +86,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
           strategy="afterInteractive"
           onLoad={() => {
             if (window.Pi) {
-              window.Pi.init({ version: "2.0", sandbox: false });
+              window.Pi.init({ version: "2.0", sandbox: true });
               console.log("Pi SDK initialized");
             }
           }}
